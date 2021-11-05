@@ -11,32 +11,32 @@ const team = [
     {
         name : 'Mayne Barznetti',
         Role : 'Founder & CEO',
-        image : '../img/wayne-barnett-founder-ceo.jpg'
+        image : 'wayne-barnett-founder-ceo.jpg'
     },
     {
         name : 'Mayne Barznetti',
         Role : 'Founder & CEO',
-        image : '../img/wayne-barnett-founder-ceo.jpg'
+        image : 'wayne-barnett-founder-ceo.jpg'
     },
     {
         name : 'Mayne Barznetti',
         Role : 'Founder & CEO',
-        image : '../img/wayne-barnett-founder-ceo.jpg'
+        image : 'wayne-barnett-founder-ceo.jpg'
     },
     {
         name : 'Mayne Barznetti',
         Role : 'Founder & CEO',
-        image : '../img/wayne-barnett-founder-ceo.jpg'
+        image : 'wayne-barnett-founder-ceo.jpg'
     },
     {
         name : 'Mayne Barznetti',
         Role : 'Founder & CEO',
-        image : '../img/wayne-barnett-founder-ceo.jpg'
+        image : 'wayne-barnett-founder-ceo.jpg'
     },
     {
         name : 'Mayne Barznetti',
         Role : 'Founder & CEO',
-        image : '../img/wayne-barnett-founder-ceo.jpg'
+        image : 'wayne-barnett-founder-ceo.jpg'
     },
 ];
 
@@ -46,8 +46,26 @@ const container = document.querySelector('.team-container');
 
 draw_team(team, container);
 
-// funzione di aggiunta oggetto
+// aggiunta card membro
+const add_btn = document.getElementById('addMemberButton');
+const name_input = document.getElementById('name');
+const role_input = document.getElementById('role');
+const image_input = document.getElementById('image');
+
+add_btn.addEventListener('click', function(){
+  const new_member = gen_member(name_input, role_input, image_input);
+
+  team.push(new_member);
+
+  draw_team(team, container)
+});
+
+
+
+// funzione di stampa oggetti
 function draw_team(team, container) {
+  container.innerHTML = '';
+
   for (let i = 0; i < team.length; i++) {
     const member = team[i];
     console.log(member);
@@ -56,7 +74,7 @@ function draw_team(team, container) {
     <div class="team-card">
       <div class="card-image">
         <img
-          src="img/${member.image}"
+          src="../img/${member.image}"
           alt="${member.name}"
         />
       </div>
@@ -65,5 +83,22 @@ function draw_team(team, container) {
         <p>${member.Role}</p>
       </div>
     </div>`
-  }
+  };
+};
+
+
+// funzione di aggiunta oggetti
+function gen_member(name, role, image) {
+  const new_member = {
+    name : name.value,
+    Role : role.value,
+    image : image.value
+  };
+
+  // reset dei valori
+  name.value = '';
+  role.value = '';
+  image.value = '';
+
+  return new_member
 }
