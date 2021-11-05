@@ -6,7 +6,7 @@
 
 
 
-
+// strutura dati card
 const team = [
     {
         name : 'Mayne Barznetti',
@@ -38,9 +38,32 @@ const team = [
         Role : 'Founder & CEO',
         image : '../img/wayne-barnett-founder-ceo.jpg'
     },
-    {
-        name : 'Mayne Barznetti',
-        Role : 'Founder & CEO',
-        image : '../img/wayne-barnett-founder-ceo.jpg'
-    },
 ];
+
+
+// renderizzazione team
+const container = document.querySelector('.team-container');
+
+draw_team(team, container);
+
+// funzione di aggiunta oggetto
+function draw_team(team, container) {
+  for (let i = 0; i < team.length; i++) {
+    const member = team[i];
+    console.log(member);
+
+    container.innerHTML += `
+    <div class="team-card">
+      <div class="card-image">
+        <img
+          src="img/${member.image}"
+          alt="${member.name}"
+        />
+      </div>
+      <div class="card-text">
+        <h3>${member.name}</h3>
+        <p>${member.Role}</p>
+      </div>
+    </div>`
+  }
+}
